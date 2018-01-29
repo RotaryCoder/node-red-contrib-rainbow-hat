@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-rainbow-hat",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Node-RED node for the Pimoroni Rainbow-HAT",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,12 @@
       "rainbow-hat-alphanum": "nodes/alphanum.js"
     }
   },
-  "author": "Wolfgang Flohr-Hochbichler",
-  "license": "MIT",
+  "author": "Wolfgang Flohr-Hochbichler <wflohr72@gmail.com>",
+  "license": "Apache-2.0",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/cyberflohr/node-red-contrib-rainbow-hat.git"
+  },
   "dependencies": {
     "bme280-sensor": "^0.1.6",
     "ht16k33-fourteensegment-display": "^0.1.1",
