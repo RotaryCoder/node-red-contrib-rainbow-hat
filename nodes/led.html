@@ -1,0 +1,67 @@
+<!--
+  Copyright Wolfgang Flohr-Hochbichler wflohr72@gmail.com
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="rainbow-hat-led">
+    <div class="form-row">
+        <label for="node-input-channel"><i class="fa fa-tasks"></i> LED</label>
+        <select id="node-input-channel">
+            <option value="6">Red</option>
+            <option value="19">Green</option>
+            <option value="26">Blue</option>
+        </select>
+    </div>
+</script>
+
+<!-- Next, some simple help text is provided for the node.                   -->
+<script type="text/x-red" data-help-name="rainbow-hat-led">
+   <p>Switch LED on/off.</p>
+   <p>A Message with <code>msg.payload</code> empty or false will turn off the LED all other messages will turn on the LED.</p>
+</script>
+
+<!-- Finally, the node type is registered along with all of its properties   -->
+<script type="text/javascript">
+
+    RED.nodes.registerType('rainbow-hat-led',{
+        category: 'Rainbow HAT',      // the palette category
+        defaults: {             // defines the editable properties of the node
+            channel: {value: "6", required:true},
+        },
+        paletteLabel: 'LED',
+        color: '#75aaff',
+        align: 'right',
+        icon: 'light.png',
+        inputs: 1,  // set the number of inputs - only 0 or 1
+        outputs: 0,  // set the number of outputs - 0 to n
+
+        // set the icon (held in icons dir below where you save the node)
+        label: function() {     // sets the default label contents
+            switch (this.channel) {
+                case '6':
+                    return 'red';
+                    break;
+                case '19':
+                    return 'green';
+                    break;
+                case '26':
+                    return 'blue';
+                    break;
+                default:
+                    return 'LED';
+                    break;
+            }
+        }
+    });
+</script>

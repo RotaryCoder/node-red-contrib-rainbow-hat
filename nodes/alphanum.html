@@ -1,0 +1,80 @@
+<!--
+  Copyright Wolfgang Flohr-Hochbichler wflohr72@gmail.com
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="rainbow-hat-alphanum">
+    <div class="form-row">
+        <label for="node-input-brightness"><i class="fa fa-sun-o"></i> Brightness</label>
+        <select id="node-input-brightness">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-blinkRate"><i class="fa fa-bolt"></i> Blink rate</label>
+        <select id="node-input-blinkRate">
+            <option value="0">off</option>
+            <option value="1">1 Hz</option>
+            <option value="2">2 Hz</option>
+            <option value="3">3 Hz</option>
+        </select>
+    </div>
+</script>
+
+<!-- Next, some simple help text is provided for the node.                   -->
+<script type="text/x-red" data-help-name="rainbow-hat-alphanum">
+   <p>
+    Displays a text on the 4-digit alphanumeric character display.
+   </p>
+   <p>
+     <code>msg.payload</code> will be used for text input.
+   </p>
+</script>
+
+<!-- Finally, the node type is registered along with all of its properties   -->
+<script type="text/javascript">
+
+    RED.nodes.registerType('rainbow-hat-alphanum',{
+        category: 'Rainbow HAT',      // the palette category
+        defaults: {             // defines the editable properties of the node
+            brightness: {value: "7", required: true},
+            blinkRate:  {value: "0", required: true},
+        },
+        paletteLabel: '14-Segment',
+        color: '#75aaff',
+        icon: 'light.png',
+        align: 'right',
+        inputs: 1,  // set the number of inputs - only 0 or 1
+        outputs: 0,  // set the number of outputs - 0 to n
+
+        // set the icon (held in icons dir below where you save the node)
+        label: function() {     // sets the default label contents
+            return '14-segment';
+        }
+    });
+</script>

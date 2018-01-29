@@ -1,0 +1,64 @@
+<!--
+  Copyright Wolfgang Flohr-Hochbichler wflohr72@gmail.com
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="rainbow-hat-temp-press">
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-refresh"></i> Update interval</label>
+        <input type="text" id="node-input-interval" placeholder="Interval in milliseconds, 0 == off">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<!-- Next, some simple help text is provided for the node.                   -->
+<script type="text/x-red" data-help-name="rainbow-hat-temp-press">
+   <p>Measures temperature and pressure using Rainbow-HATs BMP280 sensor.</p>
+    <p><code>msg.payload</code> contains the following information:</p>
+   <pre>
+{
+   "temperature_C": 32.15,
+   "temperature_F": 89.869,
+   "pressure_hPa": 967.710,
+   "pressure_inHg": 28.576
+}
+</pre>
+    <p><strong>Update interval:</strong> specififies the interval in milliseconds at which
+    the node will emit new payload data. Setting the interval to <code>0</code> will
+    disable cyclic data collection.</p>
+    <p>Sending a message to this node (any format) will also trigger data collection.</p>
+</script>
+
+<!-- Finally, the node type is registered along with all of its properties   -->
+<script type="text/javascript">
+    RED.nodes.registerType('rainbow-hat-temp-press',{
+        category: 'Rainbow HAT',      // the palette category
+        defaults: {             // defines the editable properties of the node
+            interval: {value: '', required:true},
+            name: {value: ''}
+        },
+        paletteLabel: 'Temp/Press',
+        color: '#75aaff',
+        icon: 'feed.png',
+        inputs: 1,  // set the number of inputs - only 0 or 1
+        outputs: 1,  // set the number of outputs - 0 to n
+        // set the icon (held in icons dir below where you save the node)
+        label: function() {     // sets the default label contents
+            return this.name||"Temp/Press";
+        }
+    });
+</script>
