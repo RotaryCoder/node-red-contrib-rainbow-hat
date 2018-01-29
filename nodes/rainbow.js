@@ -35,12 +35,20 @@ module.exports = function (RED) {
                 if (Array.isArray(val.payload)) {
                     for (let idx in val.payload) {
                         let led = val.payload[idx];
-                        apa102.setLedColor(idx, led.brightness || 1, led.red || 0, led.green || 0, led.blue || 0);
+                        apa102.setLedColor(idx,
+                            parseInt(led.brightness) || 1,
+                            parseInt(led.red) || 0,
+                            parseInt(led.green) || 0,
+                            parseInt(led.blue) || 0);
                     }
                 } else {
                     for (let idx of Object.keys(val.payload)) {
                         let led = val.payload[idx];
-                        apa102.setLedColor(idx, led.brightness || 1, led.red || 0, led.green || 0, led.blue || 0);
+                        apa102.setLedColor(idx,
+                            parseInt(led.brightness) || 1,
+                            parseInt(led.red) || 0,
+                            parseInt(led.green) || 0,
+                            parseInt(led.blue) || 0);
                     }
                 }
             }
@@ -64,7 +72,7 @@ module.exports = function (RED) {
         this.bufferLength = stringLength * 4;
         this.writeBuffer = Buffer.alloc(this.bufferLength);
         this.bufferLength += 9;
-        this.writeBuffer = Buffer.concat([Buffer.alloc(4), this.writeBuffer, Buffer.alloc(8)], this.bufferLength);
+        this.writeBuffer = Buffer.concat([Buffer.alloc(4), this.writeBuffer, Buffer.alloc(5)], this.bufferLength);
     }
 
     Apa102spi.prototype.sendLeds = function () {

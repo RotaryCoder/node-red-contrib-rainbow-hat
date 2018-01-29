@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-rainbow-hat",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Node-RED node for the Pimoroni Rainbow-HAT",
   "main": "index.js",
   "scripts": {
