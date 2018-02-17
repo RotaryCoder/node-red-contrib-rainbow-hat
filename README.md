@@ -26,5 +26,10 @@ Reboot your device after changing the above file.
 dtparam=i2c_arm=on
 dtparam=spi=on
 ```
+Note: If for some reason the installation process via "manage palette" will fail, try installing the rainbow-hat node via CLI.
 
+```
+cd ~/.node-red
+npm i node-red-contrib-rainbow-hat
+```
 
