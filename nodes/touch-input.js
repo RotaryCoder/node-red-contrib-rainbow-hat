@@ -54,7 +54,6 @@ module.exports = function (RED) {
 
         this.on('close', () => {
             gpio.removeListener('change', listener);
-            gpio.destroy();
         });
     }
 

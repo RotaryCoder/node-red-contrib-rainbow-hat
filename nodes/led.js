@@ -32,10 +32,6 @@ module.exports = function (RED) {
             }
         });
 
-        this.on('close', () => {
-            gpio.destroy();
-        });
-
         this.on('input', (val) => {
             gpio.write(config.channel, !val || !val.payload ? false : val.payload, (err) => {
                 if (err) {
