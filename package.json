@@ -32,7 +32,7 @@
   "dependencies": {
     "bme280-sensor": "^0.1.6",
     "ht16k33-fourteensegment-display": "^0.1.1",
-    "rpi-gpio": "^0.9.1",
+    "rpi-gpio": "^2.1.7",
     "spi-device": "^1.0.2"
   }
 }
